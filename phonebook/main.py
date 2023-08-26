@@ -1,6 +1,4 @@
 import config
-from phonebook.handlers.display_all_phone_book import \
-    display_directory_entries_on_the_screen_with_paginate
 from phonebook.handlers.find_a_record import FindRecord
 from phonebook.handlers.phonebook_entry import PhonebookEntry
 from phonebook.menu.menu_service import get_data_from_update_menu, \
@@ -14,14 +12,16 @@ def main():
 
     while FLAG_MAIN:
         user_input = main_menu()
+        phonebook_entry = PhonebookEntry(config.TABLE_NAME, config.PAGINATE)
         # TODO pattern matching
         if user_input == "0":
             print("Работа программы завершена!")
             FLAG_MAIN = False
         elif user_input == "1":
-            display_directory_entries_on_the_screen_with_paginate(config.PAGINATE)
+            phonebook_entry.view_all_entries_paginated()
+            # display_directory_entries_on_the_screen_with_paginate(config.PAGINATE)
         elif user_input == "2":
-            PhonebookEntry(config.TABLE_NAME).add_new_row()
+            phonebook_entry.add_new_row()
         elif user_input == "3":
 
             FLAG_SEARCH = True

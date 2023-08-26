@@ -3,18 +3,19 @@ from typing import Optional
 import pandas as pd
 from pandas import DataFrame
 
-from phonebook.service import _get_dataframe, _get_column_names_from_df
+from phonebook.handlers.handlers_service import _get_dataframe, \
+    _get_column_names_from_df
 
 
 class FindRecord():
     """Поиск записи в телефонной книге"""
 
-    def __init__(self, table_name):
+    def __init__(self, table_name: str):
         self.table_name = table_name
         self.df = _get_dataframe(self.table_name)
         self.num_rows = self.df.shape[0]  # Количество строк в DataFrame
 
-    def _formatted_print(self, result_search):
+    def _formatted_print(self, result_search: DataFrame) -> None:
         """Отформатированный вывод в консоль полученных данных"""
         name_columns = _get_column_names_from_df(self.table_name)
         print("Результаты поиска: ")

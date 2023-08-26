@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "phone-book"
+version = "0.1.0"
+description = ""
+authors = ["vova2092 <vovai2092@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "phone_book"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.0.3"
+pydantic = "^2.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

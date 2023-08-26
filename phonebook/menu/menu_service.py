@@ -1,20 +1,5 @@
-def update_menu():
-    print("Выберите обновляемые данные:")
-    print("1 - Фамилия")
-    print("2 - Имя")
-    print("3 - Отчество")
-    print("4 - Название организации:")
-    print("5 - Телефон (рабочий):")
-    print("6 - Телефон личный (сотовый):")
-    print("0 - Назад")
+from phonebook.menu.menu_text import update_menu
 
-    user_input_search = input("Укажите номер выбранного варианта: ")
-    return user_input_search
-
-
-# MENU = {
-#     "update_menu" : update_menu
-# }
 
 def get_data_from_update_menu():
 

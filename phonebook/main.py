@@ -4,6 +4,8 @@ from phonebook.main_menu_handlers.display_all_phone_book import \
     display_directory_entries_on_the_screen_with_paginate
 from phonebook.main_menu_handlers.find_a_record import FindRecord
 from phonebook.main_menu_handlers.record_editing import PhonebookEntry
+from phonebook.menu_service import get_data_from_update_menu, \
+    get_data_from_one_condition_menu, get_data_from_many_condition_menu
 
 
 def main_menu():
@@ -59,19 +61,6 @@ def many_condition_menu():
     return user_input_search
 
 
-def update_menu():
-    print("Выберите условие:")
-    print("1 - Фамилия")
-    print("2 - Имя")
-    print("3 - Отчество")
-    print("4 - Название организации:")
-    print("5 - Телефон (рабочий):")
-    print("6 - Телефон личный (сотовый):")
-    print("0 - Назад")
-
-    user_input_search = input("Укажите номер выбранного варианта: ")
-    return user_input_search
-
 def main():
     FLAG_MAIN = True
 
@@ -88,7 +77,6 @@ def main():
         elif user_input == "3":
 
             FLAG_SEARCH = True
-            FLAG_CONDITION = True
 
             while FLAG_SEARCH:
                 number_search_menu = search_menu()
@@ -99,57 +87,26 @@ def main():
                     index = int(input("Введите номер строки: "))
                     find_record.index_search(index - 1)
                 elif number_search_menu == "2":
-
                     number_one_condition_menu = one_condition_menu()
-                    if number_one_condition_menu == "1":
-                        data = input("Введите фамилию: ")
-                        find_record.condition_search("Фамилия", data)
-                    elif number_one_condition_menu == "2":
-                        data = input("Введите имя: ")
-                        find_record.condition_search("Имя", data)
-                    elif number_one_condition_menu == "3":
-                        data = input("Введите отчество: ")
-                        find_record.condition_search("Отчество", data)
-                    elif number_one_condition_menu == "4":
-                        data = input("Название организации: ")
-                        find_record.condition_search("Название организации", data)
-                    elif number_one_condition_menu == "5":
-                        data = input("Телефон (рабочий): ")
-                        find_record.condition_search("Телефон (рабочий)", data)
-                    elif number_one_condition_menu == "6":
-                        data = input("Телефон личный (сотовый): ")
-                        find_record.condition_search("Телефон личный (сотовый)", data)
-
-
+                    column, data = get_data_from_one_condition_menu(
+                        number_one_condition_menu)
+                    find_record.condition_search(column, data)
 
                 elif number_search_menu == "3":
-
+                    FLAG_CONDITION = True
                     conditions = []
                     while FLAG_CONDITION:
                         number_many_condition_menu = many_condition_menu()
                         if number_many_condition_menu == "0":
                             FLAG_CONDITION = False
-                        elif number_many_condition_menu == "1":
-                            data = input("Введите фамилию: ")
-                            conditions.append(("Фамилия", data))
-                        elif number_many_condition_menu == "2":
-                            data = input("Введите имя: ")
-                            conditions.append(("Имя", data))
-                        elif number_many_condition_menu == "3":
-                            data = input("Введите отчество: ")
-                            conditions.append(("Отчество", data))
-                        elif number_many_condition_menu == "4":
-                            data = input("Название организации: ")
-                            conditions.append(("Название организации", data))
-                        elif number_many_condition_menu == "5":
-                            data = input("Телефон (рабочий): ")
-                            conditions.append(("Телефон (рабочий)", data))
-                        elif number_many_condition_menu == "6":
-                            data = input("Телефон личный (сотовый): ")
-                            conditions.append(("Телефон личный (сотовый)", data))
-                        elif number_many_condition_menu == "7":  # TODO! IndexError: list index out of range
+                        elif number_many_condition_menu == "7":
                             find_record.conditions_search(conditions)
                             conditions = []
+                            FLAG_CONDITION = False
+                        else:
+                            column, data = get_data_from_many_condition_menu(
+                                number_many_condition_menu)
+                            conditions.append((column, data))
 
         elif user_input == "4":
             FLAG_SEARCH = True
@@ -162,86 +119,40 @@ def main():
                 if number_search_menu == "0":
                     FLAG_SEARCH = False
                 elif number_search_menu == "1":
-                        index = int(input("Введите номер строки: "))
-                        result_search = find_record.index_search(index - 1)
-                        number_update_menu = update_menu()
-                        if number_update_menu == "0":
-                            pass
-                        if number_update_menu == "1":
-                            data = input("Введите фамилию: ")
-                            phonebook_entry.edit_entry(result_search, ("Фамилия", data))
-                        elif number_update_menu == "2":
-                            data = input("Введите имя: ")
-                            phonebook_entry.edit_entry(result_search, ("Имя", data))
-                        elif number_update_menu == "3":
-                            data = input("Введите отчество: ")
-                            phonebook_entry.edit_entry(result_search, ("Отчество", data))
-                        elif number_update_menu == "4":
-                            data = input("Название организации: ")
-                            phonebook_entry.edit_entry(result_search, ("Название организации", data))
-                        elif number_update_menu == "5":
-                            data = input("Телефон (рабочий): ")
-                            phonebook_entry.edit_entry(result_search, ("Телефон (рабочий)", data))
-                        elif number_update_menu == "6":
-                            data = input("Телефон личный (сотовый): ")
-                            phonebook_entry.edit_entry(result_search, ("Телефон личный (сотовый)", data))
-
+                    index = int(input("Введите номер строки: "))
+                    result_search = find_record.index_search(index - 1)
+                    try:
+                        column, data = get_data_from_update_menu()
+                        phonebook_entry.edit_entry(result_search, (column, data))
+                    except:
+                        FLAG_SEARCH = False
                 elif number_search_menu == "2":
-
                     number_one_condition_menu = one_condition_menu()
-                    if number_one_condition_menu == "1":
-                        data = input("Введите фамилию: ")
-                        find_record.condition_search("Фамилия", data)
-                    elif number_one_condition_menu == "2":
-                        data = input("Введите имя: ")
-                        find_record.condition_search("Имя", data)
-                    elif number_one_condition_menu == "3":
-                        data = input("Введите отчество: ")
-                        find_record.condition_search("Отчество", data)
-                    elif number_one_condition_menu == "4":
-                        data = input("Название организации: ")
-                        find_record.condition_search("Название организации", data)
-                    elif number_one_condition_menu == "5":
-                        data = input("Телефон (рабочий): ")
-                        find_record.condition_search("Телефон (рабочий)", data)
-                    elif number_one_condition_menu == "6":
-                        data = input("Телефон личный (сотовый): ")
-                        find_record.condition_search("Телефон личный (сотовый)", data)
-
-
+                    try:
+                        column, data = get_data_from_one_condition_menu(
+                            number_one_condition_menu)
+                        result_search = find_record.condition_search(column, data)
+                        column, data = get_data_from_update_menu()
+                        phonebook_entry.edit_entry(result_search, (column, data))
+                    except:
+                        FLAG_SEARCH = False
 
                 elif number_search_menu == "3":
-
                     conditions = []
                     while FLAG_CONDITION:
                         number_many_condition_menu = many_condition_menu()
                         if number_many_condition_menu == "0":
                             FLAG_CONDITION = False
-                        elif number_many_condition_menu == "1":
-                            data = input("Введите фамилию: ")
-                            conditions.append(("Фамилия", data))
-                        elif number_many_condition_menu == "2":
-                            data = input("Введите имя: ")
-                            conditions.append(("Имя", data))
-                        elif number_many_condition_menu == "3":
-                            data = input("Введите отчество: ")
-                            conditions.append(("Отчество", data))
-                        elif number_many_condition_menu == "4":
-                            data = input("Название организации: ")
-                            conditions.append(("Название организации", data))
-                        elif number_many_condition_menu == "5":
-                            data = input("Телефон (рабочий): ")
-                            conditions.append(("Телефон (рабочий)", data))
-                        elif number_many_condition_menu == "6":
-                            data = input("Телефон личный (сотовый): ")
-                            conditions.append(("Телефон личный (сотовый)", data))
                         elif number_many_condition_menu == "7":  # TODO! IndexError: list index out of range
-                            find_record.conditions_search(conditions)
+                            result_search = find_record.conditions_search(conditions)
+                            column, data = get_data_from_update_menu()
+                            phonebook_entry.edit_entry(result_search, (column, data))
                             conditions = []
-            # record_editing(config.TABLE_NAME)
+                        else:
+                            column, data = get_data_from_many_condition_menu(
+                                number_many_condition_menu)
+                            conditions.append((column, data))
 
 
 if __name__ == '__main__':
     main()
-
-    # index_search(config.TABLE_NAME, 0)

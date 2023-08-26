@@ -17,6 +17,7 @@ def add_new_row(table_name):
 
     df_new.to_csv(file_path, index=False)
 
+    print("Добавлена новая запись: ")
     name_columns = _get_column_names_from_df(table_name)
     print(name_columns)
 

@@ -22,9 +22,7 @@ class PhonebookEntry():
             )
             print(formatted_row)
 
-
-    def edit_entry(self, result_search:DataFrame, data):
-
+    def edit_entry(self, result_search: DataFrame, data):
         # Индекс записи и имя столбца для обновления
         row_index = result_search.index
         column_name = data[0]
@@ -41,5 +39,3 @@ class PhonebookEntry():
 
         # Вывод в терминал обновленной строки
         self._formatted_print(self.df.iloc[row_index])
-
-

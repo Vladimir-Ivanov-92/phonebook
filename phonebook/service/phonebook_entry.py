@@ -3,7 +3,7 @@ from typing import Any
 import pandas as pd
 from pandas import DataFrame
 
-from phonebook.handlers.handlers_service import _get_dataframe, \
+from phonebook.service.service_function import _get_dataframe, \
     _get_column_names_from_df, \
     _input_data_for_new_row
 

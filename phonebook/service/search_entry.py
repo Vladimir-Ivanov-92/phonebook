@@ -3,11 +3,11 @@ from typing import Optional
 import pandas as pd
 from pandas import DataFrame
 
-from phonebook.handlers.handlers_service import _get_dataframe, \
+from phonebook.service.service_function import _get_dataframe, \
     _get_column_names_from_df
 
 
-class FindRecord():
+class SearchEntry():
     """Поиск записи в телефонной книге"""
 
     def __init__(self, table_name: str):

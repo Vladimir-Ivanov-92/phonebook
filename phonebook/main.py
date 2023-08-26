@@ -7,19 +7,19 @@ from phonebook.menu.menu_text import main_menu, search_menu, one_condition_menu,
     many_condition_menu
 
 
-def main():
+def main() -> None:
     FLAG_MAIN = True
+    phonebook_entry = PhonebookEntry(config.TABLE_NAME, config.PAGINATE)
+    find_record = FindRecord(config.TABLE_NAME)
 
     while FLAG_MAIN:
         user_input = main_menu()
-        phonebook_entry = PhonebookEntry(config.TABLE_NAME, config.PAGINATE)
         # TODO pattern matching
         if user_input == "0":
             print("Работа программы завершена!")
             FLAG_MAIN = False
         elif user_input == "1":
             phonebook_entry.view_all_entries_paginated()
-            # display_directory_entries_on_the_screen_with_paginate(config.PAGINATE)
         elif user_input == "2":
             phonebook_entry.add_new_row()
         elif user_input == "3":
@@ -28,7 +28,6 @@ def main():
 
             while FLAG_SEARCH:
                 number_search_menu = search_menu()
-                find_record = FindRecord(config.TABLE_NAME)
                 if number_search_menu == "0":
                     FLAG_SEARCH = False
                 elif number_search_menu == "1":
@@ -91,7 +90,7 @@ def main():
                         number_many_condition_menu = many_condition_menu()
                         if number_many_condition_menu == "0":
                             FLAG_CONDITION = False
-                        elif number_many_condition_menu == "7":  # TODO! IndexError: list index out of range
+                        elif number_many_condition_menu == "7":
                             result_search = find_record.conditions_search(conditions)
                             column, data = get_data_from_update_menu()
                             phonebook_entry.edit_entry(result_search, (column, data))

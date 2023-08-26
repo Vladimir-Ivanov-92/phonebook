@@ -6,7 +6,7 @@ from pandas import DataFrame
 from phonebook.models import NewRowData
 
 
-def _get_dataframe(table_name:str) -> DataFrame:
+def _get_dataframe(table_name: str) -> DataFrame:
     file_path = f"data/{table_name}.csv"
     df = pd.read_csv(file_path)
     return df

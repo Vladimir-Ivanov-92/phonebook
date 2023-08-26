@@ -1,7 +1,8 @@
-from phonebook.menu.menu_service import get_data_from_one_condition_menu, \
-    get_data_from_many_condition_menu, get_data_from_update_menu
-from phonebook.menu.menu_text import search_menu, many_condition_menu, \
-    one_condition_menu
+from phonebook.menu.menu_service import (get_data_from_many_condition_menu,
+                                         get_data_from_one_condition_menu,
+                                         get_data_from_update_menu)
+from phonebook.menu.menu_text import (many_condition_menu, one_condition_menu,
+                                      search_menu)
 from phonebook.service.phonebook_entry import PhonebookEntry
 from phonebook.service.search_entry import SearchEntry
 
@@ -65,7 +66,7 @@ def handle_edit_menu(phonebook_entry: PhonebookEntry,
                 result_search = search_entry.condition_search(column, data)
                 column, data = get_data_from_update_menu()
                 phonebook_entry.edit_entry(result_search, (column, data))
-            except:
+            except Exception:
                 pass
         elif user_input == "3":
             handle_conditions_edit(phonebook_entry, search_entry)

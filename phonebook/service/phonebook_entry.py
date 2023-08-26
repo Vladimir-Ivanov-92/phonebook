@@ -3,9 +3,9 @@ from typing import Any
 import pandas as pd
 from pandas import DataFrame
 
-from phonebook.service.service_function import _get_dataframe, \
-    _get_column_names_from_df, \
-    _input_data_for_new_row
+from phonebook.service.service_function import (_get_column_names_from_df,
+                                                _get_dataframe,
+                                                _input_data_for_new_row)
 
 
 class PhonebookEntry():

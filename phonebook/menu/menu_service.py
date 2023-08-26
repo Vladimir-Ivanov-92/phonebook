@@ -3,7 +3,7 @@ from typing import Optional
 from phonebook.menu.menu_text import update_menu
 
 
-def get_data_from_update_menu() -> Optional[tuple[str, str|int]]:
+def get_data_from_update_menu() -> Optional[tuple[str, str | int]]:
     number_update_menu = update_menu()
     if number_update_menu == "0":
         return None
@@ -28,7 +28,7 @@ def get_data_from_update_menu() -> Optional[tuple[str, str|int]]:
 
 
 def get_data_from_one_condition_menu(number_one_condition_menu: str) -> Optional[
-    tuple[str, str|int]]:
+        tuple[str, str | int]]:
     if number_one_condition_menu == "0":
         return None
     elif number_one_condition_menu == "1":
@@ -52,7 +52,7 @@ def get_data_from_one_condition_menu(number_one_condition_menu: str) -> Optional
 
 
 def get_data_from_many_condition_menu(number_many_condition_menu: str) -> Optional[
-    tuple[str, str|int]]:
+        tuple[str, str | int]]:
     if number_many_condition_menu == "1":
         data = input("Введите фамилию: ")
         return ("Фамилия", data)

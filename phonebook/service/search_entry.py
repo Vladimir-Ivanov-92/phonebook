@@ -3,8 +3,8 @@ from typing import Optional
 import pandas as pd
 from pandas import DataFrame
 
-from phonebook.service.service_function import _get_dataframe, \
-    _get_column_names_from_df
+from phonebook.service.service_function import (_get_column_names_from_df,
+                                                _get_dataframe)
 
 
 class SearchEntry():
@@ -47,7 +47,7 @@ class SearchEntry():
         return result_search
 
     def conditions_search(self, conditions: list[tuple[str, str]]) -> Optional[
-        DataFrame]:
+            DataFrame]:
         """Поиск строки по одному или нескольким условиям"""
         # Комбинирование условий с использованием оператора ИЛИ (&)
         combined_condition = self.df[conditions[0][0]] == conditions[0][1]

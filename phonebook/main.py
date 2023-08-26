@@ -1,9 +1,9 @@
 import config
-from phonebook.menu.handlers_menu import handle_search_menu, handle_edit_menu
-from phonebook.service.search_entry import SearchEntry
-from phonebook.service.phonebook_entry import PhonebookEntry
 
+from phonebook.menu.handlers_menu import handle_edit_menu, handle_search_menu
 from phonebook.menu.menu_text import main_menu
+from phonebook.service.phonebook_entry import PhonebookEntry
+from phonebook.service.search_entry import SearchEntry
 
 
 def main() -> None:

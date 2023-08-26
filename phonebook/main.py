@@ -1,9 +1,8 @@
 import config
-from phonebook.handlers.add_new_row import add_new_row
 from phonebook.handlers.display_all_phone_book import \
     display_directory_entries_on_the_screen_with_paginate
 from phonebook.handlers.find_a_record import FindRecord
-from phonebook.handlers.record_editing import PhonebookEntry
+from phonebook.handlers.phonebook_entry import PhonebookEntry
 from phonebook.menu.menu_service import get_data_from_update_menu, \
     get_data_from_one_condition_menu, get_data_from_many_condition_menu
 from phonebook.menu.menu_text import main_menu, search_menu, one_condition_menu, \
@@ -22,7 +21,7 @@ def main():
         elif user_input == "1":
             display_directory_entries_on_the_screen_with_paginate(config.PAGINATE)
         elif user_input == "2":
-            add_new_row(config.TABLE_NAME)
+            PhonebookEntry(config.TABLE_NAME).add_new_row()
         elif user_input == "3":
 
             FLAG_SEARCH = True

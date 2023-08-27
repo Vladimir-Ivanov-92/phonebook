@@ -16,7 +16,7 @@ files = [
 name = "flake8"
 version = "6.1.0"
 description = "the modular source code checker: pep8 pyflakes and co"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8.1"
 files = [
@@ -33,7 +33,7 @@ pyflakes = ">=3.1.0,<3.2.0"
 name = "isort"
 version = "5.12.0"
 description = "A Python utility / library to sort Python imports."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8.0"
 files = [
@@ -51,7 +51,7 @@ requirements-deprecated-finder = ["pip-api", "pipreqs"]
 name = "mccabe"
 version = "0.7.0"
 description = "McCabe checker, plugin for flake8"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 files = [
@@ -165,7 +165,7 @@ xml = ["lxml (>=4.6.3)"]
 name = "pycodestyle"
 version = "2.11.0"
 description = "Python style guide checker"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
@@ -316,7 +316,7 @@ typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 name = "pyflakes"
 version = "3.1.0"
 description = "passive checker of Python programs"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
@@ -390,4 +390,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "c72c5515fe0d6e15bbd145afdafea7a237c348f46bbe30a4d6e614a88e54f7ff"
+content-hash = "ada991938886ee52daae2b63e4a474e4f6fab03a7f628401131cb8ce0b3b7007"

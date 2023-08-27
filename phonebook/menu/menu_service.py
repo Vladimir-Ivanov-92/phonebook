@@ -1,6 +1,6 @@
 from typing import Optional
 
-from phonebook.menu.menu_text import update_menu
+from .menu_text import update_menu
 
 
 def get_data_from_update_menu() -> Optional[tuple[str, str | int]]:

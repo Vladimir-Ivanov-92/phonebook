@@ -3,7 +3,7 @@ from typing import Optional
 import pandas as pd
 from pandas import DataFrame
 
-from phonebook.service.service_function import (_get_column_names_from_df,
+from service.service_function import (_get_column_names_from_df,
                                                 _get_dataframe)
 
 
@@ -18,6 +18,7 @@ class SearchEntry():
     def _formatted_print(self, result_search: DataFrame) -> None:
         """Отформатированный вывод в консоль полученных данных"""
         name_columns = _get_column_names_from_df(self.table_name)
+        print()
         print("Результаты поиска: ")
         print(name_columns)
 

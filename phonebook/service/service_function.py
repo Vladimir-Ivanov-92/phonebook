@@ -3,7 +3,7 @@ from typing import Any
 import pandas as pd
 from pandas import DataFrame
 
-from phonebook.models import NewRowData
+from models import NewRowData
 
 
 def _get_dataframe(table_name: str) -> DataFrame:

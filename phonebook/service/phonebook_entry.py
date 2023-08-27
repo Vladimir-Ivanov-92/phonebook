@@ -3,7 +3,7 @@ from typing import Any
 import pandas as pd
 from pandas import DataFrame
 
-from phonebook.service.service_function import (_get_column_names_from_df,
+from service.service_function import (_get_column_names_from_df,
                                                 _get_dataframe,
                                                 _input_data_for_new_row)
 
@@ -29,6 +29,7 @@ class PhonebookEntry():
         """Отформатированный вывод в консоль всех строк"""
         name_columns = _get_column_names_from_df(self.table_name)
         all_formatted_row = []
+        print()
         if title:
             print(title)
         print(name_columns)
@@ -40,6 +41,7 @@ class PhonebookEntry():
     def _formatted_print(self, result_search: DataFrame, title: str = None) -> None:
         """Отформатированный вывод в консоль выбранных строк"""
         name_columns = _get_column_names_from_df(self.table_name)
+        print()
         if title:
             print(title)
         print(name_columns)

@@ -1,4 +1,5 @@
 def main_menu() -> str:
+    print()
     print("Главное меню:")
     print("1 - Вывести весь справочник")
     print("2 - Добавить новую запись в справочник")
@@ -11,6 +12,7 @@ def main_menu() -> str:
 
 
 def search_menu() -> str:
+    print()
     print("Меню поиска:")
     print("1 - Поиск по номеру записи")
     print("2 - Поиск по одному условию")
@@ -22,6 +24,7 @@ def search_menu() -> str:
 
 
 def one_condition_menu() -> str:
+    print()
     print("Выберите условие:")
     print("1 - Фамилия")
     print("2 - Имя")
@@ -37,6 +40,7 @@ def one_condition_menu() -> str:
 
 
 def many_condition_menu() -> str:
+    print()
     print("Выберите условие:")
     print("1 - Фамилия")
     print("2 - Имя")
@@ -52,6 +56,7 @@ def many_condition_menu() -> str:
 
 
 def update_menu() -> str:
+    print()
     print("Выберите обновляемые данные:")
     print("1 - Фамилия")
     print("2 - Имя")

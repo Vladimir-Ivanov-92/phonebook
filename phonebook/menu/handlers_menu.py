@@ -1,10 +1,10 @@
-from phonebook.menu.menu_service import (get_data_from_many_condition_menu,
+from .menu_service import (get_data_from_many_condition_menu,
                                          get_data_from_one_condition_menu,
                                          get_data_from_update_menu)
-from phonebook.menu.menu_text import (many_condition_menu, one_condition_menu,
+from .menu_text import (many_condition_menu, one_condition_menu,
                                       search_menu)
-from phonebook.service.phonebook_entry import PhonebookEntry
-from phonebook.service.search_entry import SearchEntry
+from service.phonebook_entry import PhonebookEntry
+from service.search_entry import SearchEntry
 
 
 def handle_search_menu(search_entry: SearchEntry) -> None:

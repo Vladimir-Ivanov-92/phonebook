@@ -7,6 +7,7 @@ from service.search_entry import SearchEntry
 
 
 def main() -> None:
+    """Запуск программы, создание главного меню"""
     phonebook_entry = PhonebookEntry(config.TABLE_NAME, config.PAGINATE)
     search_entry = SearchEntry(config.TABLE_NAME)
 

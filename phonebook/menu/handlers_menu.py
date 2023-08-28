@@ -1,13 +1,15 @@
 from .menu_service import (get_data_from_many_condition_menu,
-                                         get_data_from_one_condition_menu,
-                                         get_data_from_update_menu)
+                           get_data_from_one_condition_menu,
+                           get_data_from_update_menu)
 from .menu_text import (many_condition_menu, one_condition_menu,
-                                      search_menu)
+                        search_menu)
 from service.phonebook_entry import PhonebookEntry
 from service.search_entry import SearchEntry
 
 
 def handle_search_menu(search_entry: SearchEntry) -> None:
+    """Обработчик меню поиска"""
+
     while True:
         user_input = search_menu()
 
@@ -28,6 +30,8 @@ def handle_search_menu(search_entry: SearchEntry) -> None:
 
 
 def handle_conditions_search(search_entry: SearchEntry) -> None:
+    """Обработчик меню поиска по нескольким условиям"""
+
     conditions = []
     while True:
         user_input = many_condition_menu()
@@ -45,6 +49,8 @@ def handle_conditions_search(search_entry: SearchEntry) -> None:
 
 def handle_edit_menu(phonebook_entry: PhonebookEntry,
                      search_entry: SearchEntry) -> None:
+    """Обработчик меню добавления записи"""
+
     while True:
         user_input = search_menu()
 
@@ -79,6 +85,8 @@ def handle_edit_menu(phonebook_entry: PhonebookEntry,
 
 def handle_conditions_edit(phonebook_entry: PhonebookEntry,
                            search_entry: SearchEntry) -> None:
+    """Обработчик меню выбора нескольких условий"""
+
     conditions = []
     while True:
         number_many_condition_menu = many_condition_menu()
